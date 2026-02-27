@@ -15,13 +15,13 @@
             font-weight: 400;
             font-display: swap;
         }
-        input[type="checkbox"] {
-            transform: scale(1.5);
-        }
         body {
             margin: 0;
             overflow: scroll;
             background: #d3f5ff;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.5);
         }
         #maintitle {
             font-family: 'HancomMalrangmalrangBold', sans-serif;
@@ -85,6 +85,9 @@
         .checkboxes {
             display: none;
         }
+        .bins {
+            display: none;
+        }
   </style>
 </head>
 <body>
@@ -136,9 +139,9 @@
             <span class="notchecks" id="notch2"> 노래를 못부름</span>
         </div>
     </div>
-    <div class="bin">
-        <img src="images/opened.png" id="binopen"; style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
-        <img src="images/closed.png" id="binclose"; style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
+    <div class="bins" id="bins">
+        <img src="images/opened.png" id="binopen" style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
+        <img src="images/closed.png" id="binclose" style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
     </div>
 <script>
     let sceneno = 0;
@@ -149,6 +152,7 @@
     let checkboxes = document.getElementById("checkboxes");
     let check9 = document.getElementById("check9");
     let check10 = document.getElementById("check10");
+    let bins = document.getElementById("bins");
     no.addEventListener("click", function() {
         if (sceneno === 0) {
             no.innerText = "정말?";
