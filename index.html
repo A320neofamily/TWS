@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TWS!</title>
+    <style>
+        @font-face {
+            font-family: 'HancomMalrangmalrangBold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Bold.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'HancomMalrangmalrangRegular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        body {
+            margin: 0;
+            overflow: scroll;
+            background: #d3f5ff;
+        }
+        #maintitle {
+            font-family: 'HancomMalrangmalrangBold', sans-serif;
+            font-size: 50px;
+            text-align: center;
+            position: absolute;
+            width: 160px;
+            left: 50%;
+            top: 15px;
+            transform: translate(-50%, 0%);
+        }
+        #subtitle {
+            font-family: 'HancomMalrangmalrangRegular';
+            font-size: 25px;
+            text-align: center;
+            position: absolute;
+            width: 480px;
+            left: 50%;
+            top: 70px;
+            transform: translate(-50%, 0%);
+        }
+        #yes {
+            all: unset;
+            font-family: 'HancomMalrangmalrangRegular';
+            font-size: 25px;
+            text-align: center;
+            background-color: #15ff00;
+            color: #000000;
+            border: none;
+            position: absolute;
+            width: 130px;
+            height: 35px;
+            left: 50%;
+            top: 110px;
+            transform: translate(-105%, 0%);
+        }
+        #no {
+            all: unset;
+            font-family: 'HancomMalrangmalrangRegular';
+            font-size: 25px;
+            text-align: center;
+            background-color: #ff2828;
+            color: #ffffff;
+            border: none;
+            position: absolute;
+            width: 130px;
+            height: 35px;
+            left: 50%;
+            top: 110px;
+            transform: translate(5%, 0%);
+        }
+        .checks {
+            font-size: 24px;
+            font-family: 'HancomMalrangmalrangRegular';
+        }
+        .notchecks {
+            font-size: 24px;
+            font-family: 'HancomMalrangmalrangRegular';
+            color: #ff0000;
+        }
+        .checkboxes {
+            display: none;
+        }
+  </style>
+</head>
+<body>
+    <div class="main">
+        <div id="maintitle">TWS!</div>
+        <div id="subtitle">투어스에 입덕하시겠습니까?</div>
+        <button id="yes">yes</button>
+        <button id="no" >no</button>
+    </div>
+    <div class="checkboxes" id="checkboxes">
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 105px);">
+            <input type="checkbox" id="check1">
+            <span class="checks"> 플레디스가 맘에 들지 않음</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 140px);">
+            <input type="checkbox" id="check2">
+            <span class="checks"> 이미 덕질하는 아이돌이 있음</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 175px);">
+            <input type="checkbox" id="check3">
+            <span class="checks"> 그냥</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 210px);">
+            <input type="checkbox" id="check4">
+            <span class="checks"> 아이돌을 좋아하지 않음</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 245px);">
+            <input type="checkbox" id="check5">
+            <span class="checks"> 굳이?</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 280px);">
+            <input type="checkbox" id="check6">
+            <span class="checks"> 큰 관심이 없음</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 315px);">
+            <input type="checkbox" id="check7">
+            <span class="checks"> 투어스가 무엇인지 모름</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 350px);">
+            <input type="checkbox" id="check8">
+            <span class="checks"> 연간차트 1위한 아이돌은 너무 버거움</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 385px);">
+            <input type="checkbox" id="check9">
+            <span class="notchecks" id="notch1"> 못생김</span>
+        </div>
+        <div class="check"  style="position: absolute; left: 50%; transform: translate(-220px, 420px);">
+            <input type="checkbox" id="check10">
+            <span class="notchecks" id="notch2"> 노래를 못부름</span>
+        </div>
+    </div>
+    <div class="bin">
+        <img src="images/opened.png" id="binopen"; style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
+        <img src="images/closed.png" id="binclose"; style="width:100px; left:50%; position: absolute; transform: translate(-50%, 0%);">
+    </div>
+<script>
+    let sceneno = 0;
+    let no = document.getElementById("no");
+    let yes = document.getElementById("yes");
+    let maintitle = document.getElementById("maintitle");
+    let subtitle = document.getElementById("subtitle");
+    let checkboxes = document.getElementById("checkboxes");
+    let check9 = document.getElementById("check9");
+    let check10 = document.getElementById("check10");
+    no.addEventListener("click", function() {
+        if (sceneno === 0) {
+            no.innerText = "정말?";
+        } else if (sceneno === 1) {
+            no.innerText = "엥 왜??";
+        } else if (sceneno === 2) {
+            no.innerText = "조금 실망인데";
+            no.style.fontSize = "20px";
+        } else if (sceneno === 3) {
+            no.innerText = "ㅜㅠ왜지";
+        } else if (sceneno === 4) {
+            no.style.transition = "0.05s";
+            yes.style.transition = "0.05s";
+            no.style.backgroundColor = "#15ff00";
+            yes.style.backgroundColor = "#ff2828";
+            no.style.color = "#000";
+            yes.style.color = "#fff";
+            no.style.left = "50%";
+            yes.style.left = "50%";
+            no.style.transform = "translate(-105%, 0%)"
+            yes.style.transform = "translate(5%, 0%)"
+            no.innerText = "no";
+            no.style.fontSize = "25px";
+        } else if (sceneno === 5) {
+            no.style.transition = "0s";
+            yes.style.transition = "0s";
+            no.innerText = "이쯤되면 그냥 입덕하시죠";
+            no.style.fontSize = "12.5px";
+        } else if (sceneno === 6) {
+            no.innerText = "음 도대체 왜?";
+            no.style.fontSize = "20px";
+        } else if (sceneno === 7) {
+            no.innerText = "알아써...";
+        } else if (sceneno === 8) {
+            no.innerText = "no";
+            no.style.fontSize = "14px";
+            yes.style.fontSize = "14px";
+        } else if (sceneno === 9) {
+            maintitle.innerText = "TWS :("
+            subtitle.innerText = "투어스를 버리기 전, 버리는 이유에 대해 설문해 주세요."
+            subtitle.style.fontSize = "20px";
+            subtitle.style.left = "50%";
+            subtitle.style.top = "75px";
+            no.style.transition = "1s";
+            yes.style.transition = "1s";
+            no.style.transform = "translate(5%, 1000%)"
+            yes.style.transform = "translate(-105%, 1000%)"
+            no.style.backgroundColor = "#ff2828";
+            yes.style.backgroundColor = "#15ff00";
+            no.style.color = "#fff";
+            yes.style.color = "#000";
+            yes.innerText = "지금이라도 다시 입덕";
+            no.innerText = "인생의 전환점을 놓치기";
+            checkboxes.style.display = "block";
+        } else if (sceneno === 10) {
+            maintitle.innerText = "TWS :("
+            subtitle.innerText = "투어스를 버리는 중..."
+            subtitle.style.fontSize = "20px";
+            subtitle.style.left = "50%";
+            subtitle.style.top = "75px";
+            no.style.transition = "1s";
+            yes.style.transition = "1s";
+            no.style.transform = "translate(5%, 1000%)"
+            yes.style.transform = "translate(-105%, 1000%)"
+            no.style.backgroundColor = "#ff2828";
+            yes.style.backgroundColor = "#15ff00";
+            no.style.color = "#fff";
+            yes.style.color = "#000";
+            yes.innerText = "지금이라도 다시 입덕";
+            no.innerText = "인생의 전환점을 놓치기";
+            checkboxes.style.display = "block";
+        }
+        sceneno++
+    });
+    check9.addEventListener("change", function() {
+        if (check9.checked) {
+            alert("?");
+            check9.checked = false;
+        }
+    })
+    check10.addEventListener("change", function() {
+        if (check10.checked) {
+            alert("?");
+            check10.checked = false;
+        }
+    })
+    </script>
+
+</body>
+</html>
